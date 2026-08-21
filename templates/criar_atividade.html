@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+<h2>Cadastrar Nova Atividade</h2>
+<p>Preencha os campos abaixo para registrar uma atividade no sistema:</p>
+<br>
+<form action="{{url_for('criar_atividade')}}" method="post">
+    <label > Nome da Atividade: </label>
+    <input type="text" name="form_nome" placeholder="EX: Revisar arquivos" style="padding: 8px" required>
+    <br>
+    <br>
+    <label > Descrição da atividade:</label> <br>
+    <textarea name="form_descricao" placeholder="Descrição da atividade" style="padding: 30px" rows="3" required></textarea> <img src="https://i.pinimg.com/736x/8e/3c/84/8e3c84d9619c13db52a5611596177094.jpg" width="120"height="120">
+    <br>
+    <br>
+    <label> Data da atividade: </label>
+    <input name="form_data" type="date" style="padding: 10px" required>
+    <br>
+    <br>
+    <label> Prioridade da atividade: </label>
+    <label>
+        <input name="form_prio" value="Alta" type="radio" required>
+        Alta
+    </label>
+    <label>
+        <input name="form_prio" value="Média" type="radio" required>
+        Média
+    </label>
+    <label>
+        <input name="form_prio" value="Baixa" type="radio" required>
+    Baixa
+    </label>
+    <br>
+    <br>
+    <label> Categoria da atividade: </label>
+    <input name="form_categoria" value="Lazer" type="checkbox">
+    Lazer
+    <input name="form_categoria" value="Jurídico" type="checkbox">
+    Jurídico
+    <input name="form_categoria" value="Reunião" type="checkbox">
+    Reunião
+    <input name="form_categoria" value="Palestra" type="checkbox">
+    Palestra
+    <br>
+    <br>
+    <button type="submit" style="color: white; background-color: darkred">
+        Registrar
+    </button>
+    <button type="reset" style="color: white; background-color: darkred">
+        Redefinir
+    </button>
+
+</form>
+{% endblock conteudo %}

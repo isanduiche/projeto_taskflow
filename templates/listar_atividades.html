@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+<h2>Lista de Atividades Cadastradas</h2>
+<p>Acompanhe o status dos projetos e tarefas pendentes:</p>
+<img src="https://1.bp.blogspot.com/-2c8ynrLAQoY/Vxmtyg601HI/AAAAAAAAc5c/_8hnCPNMFsQah8d6wovyY_569IW_pVMQQCLcB/s1600/CeriseHood%2BBooks03.png" align="right" width="170">
+{% for atividade in dados_atividades %}
+<p>Nome:</p>
+{{atividade.nome}}
+<p>Descrição:</p>
+{{atividade.descricao}}<br>
+<p>Data:</p>
+{{atividade.data}}
+<p>Categoria:</p>
+{{atividade.categoria}}
+<p>Prioridade:</p>
+{{atividade.prioridade}}
+<h6 style="color: #b50101">jarvis que coisa mais linda</h6>
+{% endfor %}
+
+
+{% endblock conteudo %}
