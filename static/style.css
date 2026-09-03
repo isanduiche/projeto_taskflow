@@ -1,0 +1,64 @@
+body {
+        font-family: 'Consolas', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
+        margin: 0;
+        padding: 0;
+        background-color: #ececec
+}
+
+h1{
+        margin:0 0 10px;
+        font-size: 20px;
+}
+
+.cabecalho {
+        background-color: darkred;
+        color: white;
+        padding: 15px 30px;
+}
+
+h6{
+        background-color: #b50101;
+        padding: 5px 10px;
+        margin-block: 0.1px
+}
+
+.navegador a {
+        color: indianred;
+        text-decoration: none;
+        margin-right: 20px;
+        font-weight: bold
+}
+
+.navegador a:hover{
+        color: lightpink
+}
+
+.conteudo {
+        padding: 30px;
+        max-width: 900px;
+        margin: 0 auto;
+        background: #ffffff;
+        margin-top: 30px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+}
+
+p{
+        color: darkred;
+        font-weight: bold
+}
+
+.atividades {
+        width: 300px;
+        height: auto;
+        background: #e6a341;
+        padding: 20px;
+        margin: 10px 10px;
+}
+
+.titulo {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+}

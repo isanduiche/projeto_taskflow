@@ -2,8 +2,11 @@
 
 {% block conteudo %}
 
-<h2>Cadastrar Nova Atividade</h2>
-<p>Preencha os campos abaixo para registrar uma atividade no sistema:</p>
+<div class="titulo">
+    <h2>Cadastrar Nova Atividade</h2>
+    <p>Preencha os campos abaixo para registrar uma atividade no sistema:</p>
+</div>
+
 <br>
 <form action="{{url_for('criar_atividade')}}" method="post">
     <label > Nome da Atividade: </label>
