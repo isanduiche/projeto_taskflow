@@ -8,15 +8,17 @@
 <body>
 <div class="cabecalho">
     <h1> TaskFlow Corp | Gestão Interna </h1>
+</div>
+
+<h3> jarvis que coisa mais linda
     <div class="navegador">
         <a href="{{ url_for('index') }}">Início</a>
         <a href="{{ url_for('criar_atividade') }}"> Criar Atividade </a>
         <a href="{{ url_for('listar_atividades') }}">Listar Atividade</a>
-        <a href="{{ url_for('pessoa') }}">Perfil Colaborador</a>
+        <a href="{{url_for('login')}}"> Login de usuário </a>
+        <a href="{{ url_for('pessoa') }}">Nossos colaboradores</a>
     </div>
-</div>
-
-<h6 style="color: #b50101"> jarvis que coisa mais linda </h6>
+</h3>
 
 <div class="conteudo">
     {% block conteudo %}

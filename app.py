@@ -7,6 +7,9 @@ app = Flask(__name__)
 # Base FAKE
 base_fake= []
 
+# Base login
+base_login= []
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -38,9 +41,24 @@ def criar_atividade():
 def listar_atividades():
     return render_template('listar_atividades.html', dados_atividades=base_fake)
 
+@app.route('/usuario/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        usuario = request.form.get('form_usuario')
+        data = request.form.get('form_data')
+        senha = request.form.get('form_senha')
+        dados_pessoas = {
+            'usuario': usuario,
+            'data': data,
+            'senha': senha
+        }
+        base_login.append(dados_pessoas)
+        return render_template('pessoa.html', dados_pessoas=base_login)
+    return render_template('login.html')
+
 @app.route('/pessoa')
 def pessoa():
-    return render_template('pessoa.html')
+    return render_template('pessoa.html', dados_pessoas=base_login)
 
 # Iniciar aplicação web
 if __name__ == '__main__':

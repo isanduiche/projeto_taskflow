@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+<div class="login">
+   <div class="titulo">
+        <h2>Login de usuário</h2>
+   </div>
+
+<form action="{{url_for('login')}}" method="post">
+    <label> Nome de Usuário: </label>
+    <input type="text" name="form_usuario" placeholder="EX: Natalie Portman" style="padding: 8px" required>
+    <br>
+    <br>
+    <label> Data de login: </label>
+    <input type="date" name="form_data" style="padding: 8px" required>
+    <br>
+    <br>
+    <label> Senha: </label>
+    <input type="password" style="padding: 8px" required>
+    <br>
+    <br>
+    <button type="submit" style="color: white; background-color: darkred">
+        Entrar
+    </button>
+    <button type="reset" style="color: white; background-color: darkred">
+        Apagar
+    </button>
+</form>
+</div>
+
+
+{% endblock conteudo %}

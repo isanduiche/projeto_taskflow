@@ -3,9 +3,18 @@
 {% block conteudo %}
 
 <div class="titulo">
-    <h2>Perfil do Colaborador</h2>
+    <h2>Nossos colaboradores</h2>
+    <p> Aqui são listados os perfis de todos os usuários cadastrados na TaskFlow Corp: </p>
 </div>
-
+{% for pessoa in dados_pessoas %}
+<div class="usuario">
+    <img src="https://static.vecteezy.com/system/resources/thumbnails/054/654/150/small_2x/red-butterfly-with-black-and-white-wing-patterns-detailed-and-vivid-isolated-on-a-transparent-background-symbolizing-beauty-and-nature-png.png" width="100" height="100">
+    <p> Nome de Usuário: </p>
+    {{pessoa.usuario}}
+    <p> Data de login: </p>
+    {{pessoa.data}}
+</div>
+{% endfor %}
 
 
 
