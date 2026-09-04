@@ -5,9 +5,10 @@
     <h2>Lista de Atividades Cadastradas</h2>
     <p>Acompanhe o status dos projetos e tarefas pendentes:</p>
 </div>
-<img src="https://i.pinimg.com/736x/72/2f/00/722f00d414bc3b47f7f94237c92f66bf.jpg" align="right" width="170">
 
-    {% for atividade in dados_atividades %}
+<img src="../static/butterfly.jpg" align="right" width="170"/>
+
+{% for atividade in dados_atividades %}
 <div class="atividades">
     <p>Nome:</p>
     {{atividade.nome}}
