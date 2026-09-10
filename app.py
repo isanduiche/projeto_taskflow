@@ -46,11 +46,13 @@ def login():
     if request.method == 'POST':
         usuario = request.form.get('form_usuario')
         data = request.form.get('form_data')
+        email = request.form.get('form_email')
         senha = request.form.get('form_senha')
         dados_pessoas = {
             'usuario': usuario,
             'data': data,
-            'senha': senha
+            'senha': senha,
+            'email': email,
         }
         base_login.append(dados_pessoas)
         return render_template('pessoa.html', dados_pessoas=base_login)
