@@ -4,9 +4,13 @@
 <div class="titulo">
     <h2>Lista de Atividades Cadastradas</h2>
     <p>Acompanhe o status dos projetos e tarefas pendentes:</p>
+
 </div>
 
 <img src="../static/butterfly.jpg" align="right" width="150"/>
+<div class="cadastro">
+    <a href="{{ url_for('criar_atividade') }}"> Cadastrar ➜</a>
+</div>
 
 {% for atividade in dados_atividades %}
 <div class="atividades">
@@ -16,10 +20,14 @@
     {{atividade.descricao}}<br>
     <p>Data:</p>
     {{atividade.data}}
+    <p> Quantidade de recursos: </p>
+    {{atividade.quantidade}}
     <p>Categoria:</p>
     {{atividade.categoria}}
     <p>Prioridade:</p>
     {{atividade.prioridade}}
+    <p> Responsável: </p>
+    {{atividade.responsavel_atividade}}
 </div>
     {% endfor %}
 

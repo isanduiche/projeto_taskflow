@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<div class="titulo">
+    <h2>Categorias</h2>
+    <p>Aqui são listadas todas as categorias de atividades cadastradas na TaskFlow Corp:</p> <div class="localizar"> <a href="{{ url_for('localizar_categorias') }}"> Cadastrar ➜</a> </div>
+</div>
+{% for categoria in base_categorias %}
+<div class="categorias">
+    <p> Tipo: </p>
+    {{categoria.nome_categoria}}
+    <p> Responsável: </p>
+    {{categoria.responsavel_categoria}}
+    <p> Descrição: </p>
+    {{categoria.descricao_categoria}}
+</div>
+{% endfor %}
+{% endblock conteudo %}

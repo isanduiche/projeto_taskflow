@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<div class="recurso">
+    <div class="titulo">
+        <h2>Recurso</h2>
+        <p>Solicite os recursos necessários para a atividade:</p>
+    </div>
+    <form action="{{url_for('solicitar_recursos')}}" method="post">
+        <label> Nome do recurso:</label>
+        <input type="text" name="form_recurso" placeholder="EX: Placas de madeira" style="padding: 8px" required>
+        <br>
+        <br>
+        <label> Solicitante: </label>
+        <input type="text" name="form_nome" placeholder="EX: Natalie Portman" style="padding: 8px" required>
+        <br>
+        <br>
+        <label> Data para retirada: </label>
+        <input type="date" name="data_recurso" style="padding: 8px" required>
+        <br>
+        <br>
+        <label> Descrição: </label>
+        <br>
+        <textarea name="form_descricao" rows="10" cols="50" placeholder="Descrição do recurso"></textarea>
+        <br>
+        <br>
+        <button type="submit" style="color: white; background-color: darkred">
+            Solicitar
+        </button>
+        <button type="reset" style="color: white; background-color: darkred">
+            Apagar
+        </button>
+    </form>
+</div>
+
+
+
+{% endblock conteudo %}
+

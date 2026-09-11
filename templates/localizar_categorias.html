@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<div class="titulo">
+    <h2>Cadastrar Nova Categoria</h2>
+    <p>Preencha os campos abaixo para registrar uma categoria de atividade no sistema:</p>
+</div>
+<form action="{{url_for('localizar_categorias')}}" method="post">
+  <label> Tipo:</label>
+  <input type="text" name="form_nome_categoria" placeholder="EX: Jurídico" style="padding: 8px" required>
+  <br>
+  <br>
+  <label> Responsável: </label>
+  <input type="text" name="form_responsavel" placeholder="EX: Natalie Portman" style="padding: 8px" required>
+  <br>
+  <br>
+  <label> Descrição: </label>
+  <br>
+  <textarea name="form_descricao" rows="10" cols="50" placeholder="Descrição"></textarea>
+  <br>
+  <br>
+  <button type="submit" style="color: white; background-color: darkred">
+    Registrar
+  </button>
+  <button type="reset" style="color: white; background-color: darkred">
+    Apagar
+  </button>
+</form>
+{% endblock conteudo %}

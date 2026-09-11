@@ -43,13 +43,17 @@ h3{
         text-align: center;
         display: flex;
         align-content: baseline;
+        justify-content: center;
 }
+.navegador{
 
+}
 .navegador a {
         color: #e6a341;
         text-decoration: none;
         margin-right: 20px;
-        font-weight: bold
+        font-weight: bold;
+
 }
 
 .navegador a:hover{
@@ -67,6 +71,7 @@ h3{
         flex-wrap: wrap;
         border: 8px ridge lightgray;
 }
+
 
 p{
         color: darkred;
@@ -104,6 +109,66 @@ p{
 }
 
 .usuario {
+        width: auto;
+        height: auto;
+        background: #e6a341;
+        padding: 20px;
+        margin: 10px 10px;
+        border: 8px ridge #ca7b09;
+}
+
+
+.user a{
+        width: 100px;
+        height: auto;
+        background: #ffdea2;
+        border: 4px ridge #ca7b09;
+        text-decoration: none;
+        color: #b50101;
+}
+
+.cadastro a{
+        width: 100px;
+        height: auto;
+        background: #ffdea2;
+        border: 4px ridge #ca7b09;
+        text-decoration: none;
+        color: #b50101;
+}
+
+.recurso {
+        display: flex;
+        flex-direction: column;
+}
+
+.solicitar a{
+        width: 150px;
+        height: auto;
+        background: #ffdea2;
+        border: 4px ridge #ca7b09;
+        text-decoration: none;
+        color: #b50101;
+}
+
+.solitar_recursos{
+        width: auto;
+        height: auto;
+        background: #e6a341;
+        padding: 20px;
+        margin: 10px 10px;
+        border: 8px ridge #ca7b09;
+}
+
+.localizar a{
+        width: 150px;
+        height: auto;
+        background: #ffdea2;
+        border: 4px ridge #ca7b09;
+        text-decoration: none;
+        color: #b50101;
+}
+
+.categorias{
         width: auto;
         height: auto;
         background: #e6a341;
