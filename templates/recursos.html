@@ -9,18 +9,10 @@
 <div class="solicitar">
     <a href="{{url_for('solicitar_recursos')}}"> Solicitar ➜ </a>
 </div>
-{% for recurso in dados_recursos%}
+
 <div class="solitar_recursos">
     <img src="https://static.vecteezy.com/system/resources/previews/053/774/725/non_2x/a-red-butterfly-on-a-black-background-free-png.png" width="120" height="120">
-    <p> Nome do recurso:</p>
-    {{recurso.nome_recurso}}
-    <p> Solicitante:</p>
-    {{recurso.nome}}
-    <p> Data de Retirada:</p>
-    {{recurso.data_recurso}}
-    <p> Descrição:</p>
-    {{recurso.descricao}}
 </div>
-{% endfor %}
+
 
 {% endblock conteudo %}

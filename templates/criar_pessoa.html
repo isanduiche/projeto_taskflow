@@ -3,20 +3,24 @@
 {% block conteudo %}
 <div class="login">
    <div class="titulo">
-        <h2>Login de usuário</h2>
+        <h2>Cadastrar pessoa</h2>
    </div>
 
-<form action="{{url_for('login')}}" method="post">
+<form action="{{url_for('criar_pessoa')}}" method="post">
+    <label> Nome de Usuário: </label>
+    <input type="text" name="form_nome" placeholder="EX: Natalie Portman" style="padding: 8px">
+    <br>
+    <br>
     <label> Email: </label>
-    <input type="email" name="form_email" placeholder="nome@gmail.com" style="padding: 8px" required>
+    <input type="email" name="form_email" placeholder="nome@gmail.com" style="padding: 8px">
     <br>
     <br>
     <label> Senha: </label>
-    <input type="password" style="padding: 8px" required>
+    <input type="password" name="form_senha" style="padding: 8px">
     <br>
     <br>
     <button type="submit" style="color: white; background-color: darkred">
-        Entrar
+        Cadastrar
     </button>
     <button type="reset" style="color: white; background-color: darkred">
         Apagar

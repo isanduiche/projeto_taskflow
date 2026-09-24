@@ -1,21 +1,12 @@
 # Importar bibliotecas
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash
+from sqlalchemy.exc import SQLAlchemyError
+
+from models import Pessoa, db_session
 
 # Criar objeto flask "Apelido - app"
 app = Flask(__name__)
-
-# Base FAKE
-base_fake= []
-
-# Base login
-base_login= []
-
-#Base Recursos
-base_recursos= []
-
-#Base categorias
-base_categorias= []
-
+app.config['SECRET_KEY'] = 'corinthians'
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -23,7 +14,6 @@ def index():
 @app.route('/atividades/criar', methods=['GET','POST'])
 def criar_atividade():
     if request.method == 'POST':
-        # Aqui é onde recebe os dados do formulário
         nome_atividade = request.form.get('form_nome')
         descricao_atividade = request.form.get('form_descricao')
         data_atividade = request.form.get('form_data')
@@ -31,46 +21,63 @@ def criar_atividade():
         categoria_atividade = request.form.getlist('form_categoria')
         responsavel_atividade = request.form.get('form_responsavel')
         prioridade_atividade = request.form.get('form_prio')
-        dados = {
-            'nome': nome_atividade,
-            'descricao': descricao_atividade,
-            'data': data_atividade,
-            'categoria': categoria_atividade,
-            'prioridade': prioridade_atividade,
-            'quantidade': quantidade,
-            'responsavel_atividade': responsavel_atividade,
-        }
-        print(f'Dados cadastrados{dados}')
-        base_fake.append(dados)
-        print(f'base_fake {base_fake}')
-        return render_template('listar_atividades.html', dados_atividades=base_fake)
+
+        return render_template('listar_atividades.html')
 
     return render_template('criar_atividade.html')
 
 @app.route('/atividades/listar')
 def listar_atividades():
-    return render_template('listar_atividades.html', dados_atividades=base_fake)
+    return render_template('listar_atividades.html')
 
-@app.route('/usuario/login', methods=['GET', 'POST'])
+@app.route('/pessoa/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        usuario = request.form.get('form_usuario')
-        data = request.form.get('form_data')
         email = request.form.get('form_email')
         senha = request.form.get('form_senha')
-        dados_pessoas = {
-            'usuario': usuario,
-            'data': data,
-            'senha': senha,
-            'email': email,
-        }
-        base_login.append(dados_pessoas)
-        return render_template('pessoa.html', dados_pessoas=base_login)
+
+        return render_template('pessoa.html')
     return render_template('login.html')
+
+@app.route('/pessoa/criar', methods=['GET', 'POST'])
+def criar_pessoa():
+    # Verifica o metodo, se for GET vai para a pagina do formulario
+    if request.method == 'GET':
+        return render_template('criar_pessoa.html')
+
+    #Recebe os dados via Post
+    nome_form = request.form.get('form_nome')
+    email_form = request.form.get('form_email')
+    senha_form = request.form.get('form_senha')
+    print(f'nome: {nome_form}, email: {email_form}, senha: {senha_form}')
+
+    if not nome_form:
+        flash('Preencha o campo!', 'error')
+        return render_template('criar_pessoa.html')
+
+    try:
+        # Cria uma nova pessoa e adiciona na base de dados
+        nova_pessoa = Pessoa(nome=nome_form, email=email_form, senha=senha_form)
+
+        # Inicializa a sessão com o banco de dados
+        db_session.add(nova_pessoa)
+        db_session.commit()
+        return render_template('criar_pessoa.html')
+
+    except SQLAlchemyError as e:
+        db_session.rollback()
+        print(f'Erro ao salvar pessoa no banco: {e}')
+        flash('Erro ao salvar pessoa no banco!', 'error')
+        return render_template('criar_pessoa.html')
+    except Exception as e:
+        db_session.rollback()
+        print(f'Erro inesperado: {e}')
+        flash('Erro inesperado!', 'error')
+        return render_template('criar_pessoa.html')
 
 @app.route('/pessoa')
 def pessoa():
-    return render_template('pessoa.html', dados_pessoas=base_login)
+    return render_template('pessoa.html')
 
 @app.route('/recursos/solicitar', methods=['GET', 'POST'])
 def solicitar_recursos():
@@ -79,19 +86,12 @@ def solicitar_recursos():
         nome = request.form.get('form_nome')
         data_recurso = request.form.get('form_data')
         descricao = request.form.get('form_descricao')
-        dados_recursos = {
-            'nome_recurso': nome_recurso,
-            'nome': nome,
-            'data_recurso': data_recurso,
-            'descricao': descricao
-        }
-        base_recursos.append(dados_recursos)
-        return render_template('recursos.html', dados_recursos=base_recursos)
-    return render_template('solicitar_recursos.html', dados_recursos=base_recursos)
+        return render_template('recursos.html')
+    return render_template('solicitar_recursos.html')
 
 @app.route('/recursos')
 def recursos():
-    return render_template('recursos.html', dados_recursos=base_recursos)
+    return render_template('recursos.html')
 
 @app.route('/categorias/localizar', methods=['GET', 'POST'])
 def localizar_categorias():
@@ -99,18 +99,13 @@ def localizar_categorias():
         nome_categoria = request.form.get('form_nome_categoria')
         descricao_categoria = request.form.get('form_descricao')
         responsavel_categoria = request.form.get('form_responsavel')
-        dados_categorias = {
-            'nome_categoria': nome_categoria,
-            'descricao_categoria': descricao_categoria,
-            'responsavel_categoria': responsavel_categoria
-        }
-        base_categorias.append(dados_categorias)
-        return render_template('categorias.html', base_categorias=base_categorias)
-    return render_template('localizar_categorias.html', base_categorias=base_categorias)
+
+        return render_template('categorias.html')
+    return render_template('localizar_categorias.html')
 
 @app.route('/categorias')
 def categorias():
-    return render_template('categorias.html', dados_categorias=base_categorias)
+    return render_template('categorias.html')
 
 # Iniciar aplicação web
 if __name__ == '__main__':

@@ -176,3 +176,12 @@ p{
         margin: 10px 10px;
         border: 8px ridge #ca7b09;
 }
+
+.pessoa a {
+        width: 150px;
+        height: auto;
+        background: #ffdea2;
+        border: 4px ridge #ca7b09;
+        text-decoration: none;
+        color: #b50101;
+}

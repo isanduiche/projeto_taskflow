@@ -13,12 +13,19 @@
 <h3>
     <div class="navegador">
         <a href="{{ url_for('index') }}">Início</a>
-        <a href="{{ url_for('pessoa') }}">Usuários</a>
+        <a href="{{ url_for('pessoa') }}">Pessoas</a>
         <a href="{{url_for('recursos')}}">Recursos</a>
         <a href="{{url_for('categorias')}}"> Categorias </a>
         <a href="{{ url_for('listar_atividades') }}">Atividades</a>
     </div>
 </h3>
+
+
+{% for mensagem in get_flashed_messages() %}
+    {{ mensagem }}
+{% endfor %}
+
+
 
 <div class="conteudo">
     {% block conteudo %}
